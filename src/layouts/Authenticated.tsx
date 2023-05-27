@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from 'react'
 import { useState } from 'react'
-import { mdiForwardburger, mdiBackburger, mdiMenu } from '@mdi/js'
+import { mdiForwardburger, mdiBackburger, mdiMenu, mdiLessThan, mdiGreaterThan } from '@mdi/js'
 import menuAside from '../menuAside'
 import menuNavBar from '../menuNavBar'
 import BaseIcon from '../components/BaseIcon'
@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '../stores/hooks'
 import FormField from '../components/FormField'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
+import {sidePadding} from '../config'
 
 type Props = {
   children: ReactNode
@@ -34,14 +35,14 @@ export default function LayoutAuthenticated({ children }: Props) {
 
   const darkMode = useAppSelector((state) => state.style.darkMode)
 
-  const [isAsideMobileExpanded, setIsAsideMobileExpanded] = useState(false)
+  const [isAsideMobileExpanded, setIsAsideMobileExpanded] = useState(true)
   const [isAsideLgActive, setIsAsideLgActive] = useState(false)
 
   const router = useRouter()
 
   useEffect(() => {
     const handleRouteChangeStart = () => {
-      setIsAsideMobileExpanded(false)
+      setIsAsideMobileExpanded(true)
       setIsAsideLgActive(false)
     }
 
@@ -54,24 +55,30 @@ export default function LayoutAuthenticated({ children }: Props) {
     }
   }, [router.events, dispatch])
 
-  const layoutAsidePadding = 'xl:pl-60'
+  const layoutAsidePadding = isAsideMobileExpanded ? `xl:pl-[265px]`:`xl:pl-[100px]`
 
   return (
     <div className={`${darkMode ? 'dark' : ''} overflow-hidden lg:overflow-visible`}>
       <div
         className={`${layoutAsidePadding} ${
-          isAsideMobileExpanded ? 'ml-60 lg:ml-0' : ''
-        } pt-14 min-h-screen w-screen transition-position lg:w-auto bg-gray-50 dark:bg-slate-800 dark:text-slate-100`}
+          isAsideMobileExpanded ? `ml-${sidePadding} lg:ml-0` : ''
+        } pt-14 min-h-screen w-screen transition-position lg:w-auto bg-black dark:bg-slate-800 dark:text-slate-100`}
       >
         <NavBar
           menu={menuNavBar}
-          className={`${layoutAsidePadding} ${isAsideMobileExpanded ? 'ml-60 lg:ml-0' : ''}`}
+          className={`xl:ml-${isAsideMobileExpanded ? '[260px]':'[100px]'} ${isAsideMobileExpanded ? `ml-${sidePadding} lg:ml-0` : ''}`}
         >
           <NavBarItemPlain
             display="flex lg:hidden"
             onClick={() => setIsAsideMobileExpanded(!isAsideMobileExpanded)}
           >
             <BaseIcon path={isAsideMobileExpanded ? mdiBackburger : mdiForwardburger} size="24" />
+          </NavBarItemPlain>
+          <NavBarItemPlain
+            display="hidden xl:flex relative -left-[25px] top-[25px]"
+            onClick={() => setIsAsideMobileExpanded(!isAsideMobileExpanded)}
+          >
+            <BaseIcon className='bg-white rounded-full  shadow-lg shadow-cyan-500/50' path={isAsideMobileExpanded ? mdiLessThan : mdiGreaterThan} size="12" />
           </NavBarItemPlain>
           <NavBarItemPlain
             display="hidden lg:flex xl:hidden"

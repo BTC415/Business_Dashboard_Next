@@ -5,6 +5,7 @@ import BaseIcon from './BaseIcon'
 import NavBarItemPlain from './NavBarItemPlain'
 import NavBarMenuList from './NavBarMenuList'
 import { MenuNavBarItem } from '../interfaces'
+import { sidePadding } from '../config'
 
 type Props = {
   menu: MenuNavBarItem[]
@@ -21,7 +22,7 @@ export default function NavBar({ menu, className = '', children }: Props) {
 
   return (
     <nav
-      className={`${className} top-0 inset-x-0 fixed bg-gray-50 h-14 z-30 transition-position w-screen lg:w-auto dark:bg-slate-800`}
+      className={`${className} rounded-tl-3xl bg-gray-50 top-0 inset-x-0 fixed h-14 z-40 transition-position w-screen lg:w-auto dark:bg-slate-800`}
     >
       <div className={`flex lg:items-stretch ${containerMaxW}`}>
         <div className="flex flex-1 items-stretch h-14">{children}</div>

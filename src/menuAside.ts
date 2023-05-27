@@ -1,15 +1,15 @@
 import {
-  mdiAccountCircle,
-  mdiMonitor,
-  mdiGithub,
+  mdiTableAccount,
+  mdiViewDashboard,
+  mdiCommentQuoteOutline,
   mdiLock,
   mdiAlertCircle,
-  mdiSquareEditOutline,
-  mdiTable,
+  mdiCrowd,
+  mdiBagPersonal,
   mdiViewList,
-  mdiTelevisionGuide,
-  mdiResponsive,
-  mdiPalette,
+  mdiPencil,
+  mdiCashSync,
+  mdiReceiptTextCheck,
   mdiVuejs,
 } from '@mdi/js'
 import { MenuAsideItem } from './interfaces'
@@ -17,72 +17,43 @@ import { MenuAsideItem } from './interfaces'
 const menuAside: MenuAsideItem[] = [
   {
     href: '/dashboard',
-    icon: mdiMonitor,
+    icon: mdiViewDashboard,
     label: 'Dashboard',
   },
   {
     href: '/tables',
-    label: 'Tables',
-    icon: mdiTable,
+    label: 'Orders',
+    icon: mdiBagPersonal,
   },
   {
     href: '/forms',
-    label: 'Forms',
-    icon: mdiSquareEditOutline,
+    label: 'Customers',
+    icon: mdiCrowd,
   },
   {
     href: '/ui',
-    label: 'UI',
-    icon: mdiTelevisionGuide,
+    label: 'Catalogue',
+    icon: mdiPencil,
   },
   {
     href: '/responsive',
-    label: 'Responsive',
-    icon: mdiResponsive,
+    label: 'Payouts',
+    icon: mdiCashSync,
   },
   {
     href: '/',
-    label: 'Styles',
-    icon: mdiPalette,
+    label: 'Tax Invoice',
+    icon: mdiReceiptTextCheck,
   },
   {
     href: '/profile',
-    label: 'Profile',
-    icon: mdiAccountCircle,
+    label: 'User Management',
+    icon: mdiTableAccount,
   },
   {
-    href: '/login',
-    label: 'Login',
-    icon: mdiLock,
-  },
-  {
-    href: '/error',
-    label: 'Error',
-    icon: mdiAlertCircle,
-  },
-  {
-    label: 'Dropdown',
-    icon: mdiViewList,
-    menu: [
-      {
-        label: 'Item One',
-      },
-      {
-        label: 'Item Two',
-      },
-    ],
-  },
-  {
-    href: 'https://github.com/justboil/admin-one-react-tailwind',
-    label: 'GitHub',
-    icon: mdiGithub,
-    target: '_blank',
-  },
-  {
-    href: 'https://github.com/justboil/admin-one-vue-tailwind',
-    label: 'Vue version',
-    icon: mdiVuejs,
-    target: '_blank',
+    label: 'Give Feedback',
+    icon: mdiCommentQuoteOutline,
+    href: '/feedback'
   },
 ]
 

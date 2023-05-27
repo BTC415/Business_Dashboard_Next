@@ -28,7 +28,7 @@ export default function NavBarItem({ item }: Props) {
   const [isDropdownActive, setIsDropdownActive] = useState(false)
 
   const componentClass = [
-    'block lg:flex items-center relative cursor-pointer',
+    'block lg:flex items-center relative cursor-pointer   text-grey-100 text-slate-500 dark:bg-slate-800',
     isDropdownActive
       ? `${navBarItemLabelActiveColorStyle} dark:text-slate-400`
       : `${navBarItemLabelStyle} dark:text-white dark:hover:text-slate-400 ${navBarItemLabelHoverStyle}`,
