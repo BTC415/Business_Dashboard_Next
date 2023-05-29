@@ -55,7 +55,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             <meta property="twitter:image:width" content={imageWidth} />
             <meta property="twitter:image:height" content={imageHeight} />
 
-            <link rel="icon" href="/admin-one-react-tailwind/favicon.png" />
+            <link rel="icon" href="https://www.zbooni.com/dashboard/static/favicon.ico" />
           </Head>
 
           <Script

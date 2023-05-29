@@ -53,6 +53,7 @@ const FormField = ({ icons = [], ...props }: Props) => {
               <BaseIcon
                 path={icons[index]}
                 w="w-10"
+                size={30}
                 h={props.hasTextareaHeight ? 'h-full' : 'h-12'}
                 className="absolute top-0 left-0 z-10 pointer-events-none text-gray-500 dark:text-slate-400"
               />

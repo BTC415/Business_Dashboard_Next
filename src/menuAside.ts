@@ -2,15 +2,11 @@ import {
   mdiTableAccount,
   mdiViewDashboard,
   mdiCommentQuoteOutline,
-  mdiLock,
-  mdiAlertCircle,
   mdiCrowd,
   mdiBagPersonal,
-  mdiViewList,
   mdiPencil,
   mdiCashSync,
   mdiReceiptTextCheck,
-  mdiVuejs,
 } from '@mdi/js'
 import { MenuAsideItem } from './interfaces'
 
@@ -21,27 +17,27 @@ const menuAside: MenuAsideItem[] = [
     label: 'Dashboard',
   },
   {
-    href: '/tables',
+    href: '/orders',
     label: 'Orders',
     icon: mdiBagPersonal,
   },
   {
-    href: '/forms',
+    href: '/customers',
     label: 'Customers',
     icon: mdiCrowd,
   },
   {
-    href: '/ui',
+    href: '/catalogue',
     label: 'Catalogue',
     icon: mdiPencil,
   },
   {
-    href: '/responsive',
+    href: '/payouts',
     label: 'Payouts',
     icon: mdiCashSync,
   },
   {
-    href: '/',
+    href: '/invoices',
     label: 'Tax Invoice',
     icon: mdiReceiptTextCheck,
   },

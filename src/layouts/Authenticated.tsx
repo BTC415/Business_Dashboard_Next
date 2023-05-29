@@ -14,6 +14,8 @@ import FormField from '../components/FormField'
 import { Field, Form, Formik } from 'formik'
 import { useRouter } from 'next/router'
 import {sidePadding} from '../config'
+import StatesContext from './StatesContext'
+import Link from 'next/link'
 
 type Props = {
   children: ReactNode
@@ -25,8 +27,8 @@ export default function LayoutAuthenticated({ children }: Props) {
   useEffect(() => {
     dispatch(
       setUser({
-        name: 'John Doe',
-        email: 'john@example.com',
+        name: 'addullah',
+        email: 'addullah@zbooni.com',
         avatar:
           'https://avatars.dicebear.com/api/avataaars/example.svg?options[top][]=shortHair&options[accessoriesChance]=93',
       })
@@ -58,6 +60,7 @@ export default function LayoutAuthenticated({ children }: Props) {
   const layoutAsidePadding = isAsideMobileExpanded ? `xl:pl-[265px]`:`xl:pl-[100px]`
 
   return (
+    <StatesContext.Provider value={[isAsideMobileExpanded, isAsideLgActive]}>
     <div className={`${darkMode ? 'dark' : ''} overflow-hidden lg:overflow-visible`}>
       <div
         className={`${layoutAsidePadding} ${
@@ -66,7 +69,7 @@ export default function LayoutAuthenticated({ children }: Props) {
       >
         <NavBar
           menu={menuNavBar}
-          className={`xl:ml-${isAsideMobileExpanded ? '[260px]':'[100px]'} ${isAsideMobileExpanded ? `ml-${sidePadding} lg:ml-0` : ''}`}
+          className={`${isAsideMobileExpanded ? 'xl:ml-[260px] lg:ml-0':'xl:ml-[100px]'}  `}
         >
           <NavBarItemPlain
             display="flex lg:hidden"
@@ -109,17 +112,12 @@ export default function LayoutAuthenticated({ children }: Props) {
         />
         {children}
         <FooterBar>
-          Get more with{` `}
-          <a
-            href="https://tailwind-react.justboil.me/dashboard"
-            target="_blank"
-            rel="noreferrer"
-            className="text-blue-600"
-          >
-            Premium version
-          </a>
+        All Rights Reserved. <Link className=' text-blue-400' href="#">Terms & Conditions</Link> <span>|</span> 
+        <Link className=' text-blue-400' href="#"> Privacy Policy </Link> 
+        
         </FooterBar>
       </div>
     </div>
+    </StatesContext.Provider>
   )
 }

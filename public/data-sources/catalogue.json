@@ -1,0 +1,13 @@
+{
+    "data": [
+        {
+            "ProductName":"Abdullah",
+            "cShopVisiblity":true,
+            "ItemPrice":280,
+            "Quantitiy":"U",
+            "TotalSold":0,
+            "QtySold":0,
+            "DateCreated":"Dec 8, 2022"
+        }
+    ]
+}

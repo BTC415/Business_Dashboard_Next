@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext} from 'react'
+import StatesContext from '../layouts/StatesContext';
 import { mdiMinus, mdiPlus } from '@mdi/js'
 import BaseIcon from './BaseIcon'
 import Link from 'next/link'
@@ -24,7 +25,9 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
   const activeClassAddon = !item.color && isLinkActive ? asideMenuItemActiveStyle : ''
 
   const { asPath, isReady } = useRouter()
-
+  const states = useContext(StatesContext);
+const [isAsideMobileExpanded, isAsideLgActive] = Array.isArray(states) ? states : [false, false];
+  
   useEffect(() => {
     if (item.href && isReady) {
       const linkPathName = new URL(item.href, location.href).pathname
@@ -38,14 +41,14 @@ const AsideMenuItem = ({ item, isDropdownList = false }: Props) => {
   const asideMenuItemInnerContents = (
     <>
       {item.icon && (
-        <BaseIcon path={item.icon} className={`flex-none ${activeClassAddon} ${isLinkActive?'text-green-500':''} `} w="w-20" size="30" />
+        <BaseIcon path={item.icon} className={`flex-none transition-transform ${!isAsideMobileExpanded?'pl-[8px] py-4':''} ${activeClassAddon} ${isLinkActive?'text-green-500':''} ${!isAsideMobileExpanded?'scale-150':''} `} w="w-20" size={isAsideMobileExpanded?20:24} />
       )}
       <span
         className={`grow text-ellipsis line-clamp-1 ${
           item.menu ? '' : 'pr-12'
         } ${activeClassAddon}`}
       >
-        {item.label}
+        {isAsideMobileExpanded?item.label:''}
       </span>
       {item.menu && (
         <BaseIcon

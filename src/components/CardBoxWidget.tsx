@@ -1,5 +1,5 @@
 import { mdiCog } from '@mdi/js'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { ColorKey, TrendType } from '../interfaces'
 import { colorsText } from '../colors'
 import BaseButton from './BaseButton'
@@ -12,26 +12,29 @@ type Props = {
   number: number
   numberPrefix?: string
   numberSuffix?: string
-  icon: string
+  icon?: string
   iconColor: ColorKey
   label: string
   trendLabel?: string
   trendType?: TrendType
-  trendColor?: ColorKey
+  trendColor?: ColorKey  
+  children?: ReactNode
+  className?: string
+  small?:boolean
 }
 
 const CardBoxWidget = (props: Props) => {
   return (
-    <CardBox>
+    <CardBox className={props.className}>
       {props.trendLabel && props.trendType && props.trendColor && (
         <div className="flex items-center justify-between mb-3">
           <PillTagTrend
             label={props.trendLabel}
             type={props.trendType}
             color={props.trendColor}
-            small
+            small={props.small}
           />
-          <BaseButton icon={mdiCog} color="lightDark" small />
+          {/* <BaseButton icon={mdiCog} color="lightDark" small /> */}
         </div>
       )}
       <div className="flex items-center justify-between">
@@ -55,6 +58,8 @@ const CardBoxWidget = (props: Props) => {
           />
         )}
       </div>
+      <p className=' text-right'>{props.children}</p>
+      
     </CardBox>
   )
 }

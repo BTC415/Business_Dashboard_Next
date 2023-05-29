@@ -4,8 +4,12 @@ import {
   mdiChevronDown,
   mdiAlertCircleOutline,
   mdiInformationOutline,
-  mdiCheckCircleOutline,
+  mdiCheckCircle,
   mdiAlertOutline,
+  mdiTimerSand,
+  mdiCloseCircle,
+  mdiTelevisionClassic,
+  mdiMonitorDashboard,
 } from '@mdi/js'
 import { ColorKey, TrendType } from '../interfaces'
 import PillTag from './PillTag'
@@ -21,10 +25,13 @@ const PillTagTrend = ({ small = false, ...props }: Props) => {
   const trendIcon = {
     up: mdiChevronUp,
     down: mdiChevronDown,
-    success: mdiCheckCircleOutline,
+    success: mdiCheckCircle,
     danger: mdiAlertOutline,
     warning: mdiAlertCircleOutline,
     info: mdiInformationOutline,
+    failed: mdiCloseCircle,
+    waiting:mdiTimerSand,
+    dashboard:mdiMonitorDashboard,
   }[props.type]
 
   return <PillTag label={props.label} color={props.color} icon={trendIcon} small={small} />

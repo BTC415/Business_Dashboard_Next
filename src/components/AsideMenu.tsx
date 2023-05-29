@@ -20,7 +20,7 @@ export default function AsideMenu({
     <>
       <AsideMenuLayer
         menu={props.menu}
-        className={`border-box ${isAsideMobileExpanded ? 'left-0' : `-left-${sidePadding} lg:left-0`} ${
+        className={`${isAsideMobileExpanded ? 'left-0' : `-left-${sidePadding} lg:left-0`} ${
           !isAsideLgActive ? 'lg:hidden xl:flex' : ''
         }`}
         onAsideLgCloseClick={props.onAsideLgClose}

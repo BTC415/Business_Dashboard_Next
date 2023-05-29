@@ -1,8 +1,13 @@
 import {
   mdiMenu,
-  mdiClockOutline,
-  mdiCloud,
-  mdiCrop,
+  mdiTableAccount,
+  mdiViewDashboard,
+  mdiCommentQuoteOutline,
+  mdiCrowd,
+  mdiBagPersonal,
+  mdiPencil,
+  mdiCashSync,
+  mdiReceiptTextCheck,
   mdiAccount,
   mdiCogOutline,
   mdiEmail,
@@ -16,22 +21,50 @@ import { MenuNavBarItem } from './interfaces'
 const menuNavBar: MenuNavBarItem[] = [
   {
     icon: mdiMenu,
-    label: 'Sample menu',
+    label: 'Menu',
     menu: [
       {
-        icon: mdiClockOutline,
-        label: 'Item One',
+        href: '/dashboard',
+        icon: mdiViewDashboard,
+        label: 'Dashboard',
       },
       {
-        icon: mdiCloud,
-        label: 'Item Two',
+        href: '/orders',
+        label: 'Orders',
+        icon: mdiBagPersonal,
+      },
+      {
+        href: '/customers',
+        label: 'Customers',
+        icon: mdiCrowd,
+      },
+      {
+        href: '/catalogue',
+        label: 'Catalogue',
+        icon: mdiPencil,
+      },
+      {
+        href: '/payouts',
+        label: 'Payouts',
+        icon: mdiCashSync,
+      },
+      {
+        href: '/invoices',
+        label: 'Tax Invoice',
+        icon: mdiReceiptTextCheck,
+      },
+      {
+        href: '/profile',
+        label: 'User Management',
+        icon: mdiTableAccount,
       },
       {
         isDivider: true,
       },
       {
-        icon: mdiCrop,
-        label: 'Item Last',
+        label: 'Give Feedback',
+        icon: mdiCommentQuoteOutline,
+        href: '/feedback',
       },
     ],
   },
@@ -40,7 +73,7 @@ const menuNavBar: MenuNavBarItem[] = [
     menu: [
       {
         icon: mdiAccount,
-        label: 'My Profile',
+        label: 'Profile',
         href: '/profile',
       },
       {
@@ -66,20 +99,6 @@ const menuNavBar: MenuNavBarItem[] = [
     label: 'Light/Dark',
     isDesktopNoLabel: true,
     isToggleLightDark: true,
-  },
-  {
-    icon: mdiGithub,
-    label: 'GitHub',
-    isDesktopNoLabel: true,
-    href: 'https://github.com/justboil/admin-one-react-tailwind',
-    target: '_blank',
-  },
-  {
-    icon: mdiVuejs,
-    label: 'Vue version',
-    isDesktopNoLabel: true,
-    href: 'https://github.com/justboil/admin-one-vue-tailwind',
-    target: '_blank',
   },
   {
     icon: mdiLogout,

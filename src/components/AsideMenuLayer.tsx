@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import StatesContext from '../layouts/StatesContext';
 import BaseIcon from './BaseIcon'
-import { mdiLogout, mdiClose, mdiPhoneInTalk } from '@mdi/js'
+import { mdiLogout, mdiClose, mdiPhoneInTalk, mdiPlusThick } from '@mdi/js'
 import AsideMenuItem from './AsideMenuItem'
 import AsideMenuList from './AsideMenuList'
 import { MenuAsideItem } from '../interfaces'
@@ -33,6 +34,8 @@ export default function AsideMenuLayer({ menu, className = '', ...props }: Props
     e.preventDefault()
     props.onAsideLgCloseClick()
   }
+  const states = useContext(StatesContext);
+const [isAsideMobileExpanded, isAsideLgActive] = Array.isArray(states) ? states : [false, false];
 
   return (
     <aside
@@ -46,32 +49,46 @@ export default function AsideMenuLayer({ menu, className = '', ...props }: Props
         >
           <div className="text-center flex-1 lg:text-left lg:pl-6 xl:text-center xl:pl-0">
             <b className="font-black mask-logo left-0 flex transition lg:overflow-hidden lg:transition-all">
-              <Image className="ml-5 mt-5" alt="zbooni" src="https://zbooni.com/dashboard/_next/static/media/zbooni-logo-secondary.70f86621.svg" width="124" height="23" />
+              <Image className={` transition-all ml-${isAsideMobileExpanded ? 5 : 4} mt-5`} alt="zbooni" src="https://zbooni.com/dashboard/_next/static/media/zbooni-logo-secondary.70f86621.svg" width={isAsideMobileExpanded ? 124 : 240} height="23" />
               <br />
             </b>
-            <div className="text-left pl-5">Dashboard
+            {isAsideMobileExpanded && (
+              <div className="text-left pl-5">Dashboard
 
-              <PillTag className=' visible mt-1 block max-h-4 whitespace-pre text-xs font-thin text-black opacity-100 lg:transition-all' label="Beta" color="success" small={true} />
-              
-          <button
-            className="hidden lg:inline-block xl:hidden p-3"
-            onClick={handleAsideLgCloseClick}
-          >
-            <BaseIcon path={mdiClose} />
-          </button>
+                <PillTag className=' visible mt-1 block max-h-4 whitespace-pre text-xs font-thin text-black opacity-100 lg:transition-all' label="Beta" color="success" small={true} />
+
+                <button
+                  className="hidden lg:inline-block xl:hidden p-3"
+                  onClick={handleAsideLgCloseClick}
+                >
+                  <BaseIcon path={mdiClose} />
+                </button>
+              </div>
+            )}
+
+            <div className={` transition-all relative ${isAsideMobileExpanded ? 'm-12 mb-0' : 'ml-4 my-4'} h-18 w-${isAsideMobileExpanded ? 36 : 16} overflow-hidden rounded-lg`}>
+              <Image alt="abdula" src="https://www.zbooni.com/dashboard/_next/image?url=https%3A%2F%2Fdlxl63y8t41yr.cloudfront.net%2Fmedia%2Fbusiness_logos%2FIMG_20221201_170154041.jpg&w=1080&q=75" width={isAsideMobileExpanded ? 200 : 120} height="180" />
+
             </div>
-            <div className=" relative m-12 mb-0 h-18 w-36 overflow-hidden rounded-lg">
-             <Image alt="abdula" src="https://www.zbooni.com/dashboard/_next/image?url=https%3A%2F%2Fdlxl63y8t41yr.cloudfront.net%2Fmedia%2Fbusiness_logos%2FIMG_20221201_170154041.jpg&w=1080&q=75" width="200" height="180" />
-              
-            </div>
-            <div>مستشار</div>
-            <div className="text-sm mb-8">king abdullah, Riyadh, Saudi Arabia</div>
-            <div className="m-5">
-              <BaseButton className='font-bold'
-            label="Create New Order"
-            color="white"
-            roundedFull
-            /></div>
+            {isAsideMobileExpanded && (
+              <>
+                <div>مستشار</div>
+                <div className="text-sm mb-8">king abdullah, Riyadh, Saudi Arabia</div>
+              </>
+            )}
+            {!isAsideMobileExpanded && (
+              <>
+                <hr className="border-dashed" />
+              </>
+            )}
+            <div className={`${isAsideMobileExpanded?"m-5":"m-7"} w-0`}>
+              <BaseButton className='font-bold transition-all'
+                label={`${isAsideMobileExpanded ? 'Create New Order' : ''}`}
+                icon={`${isAsideMobileExpanded?undefined:mdiPlusThick}`}
+                color="white"
+                roundedFull
+              /></div>
+              <hr className="border-dashed" />
           </div>
         </div>
         <div
@@ -79,16 +96,17 @@ export default function AsideMenuLayer({ menu, className = '', ...props }: Props
             }`}
         >
           <AsideMenuList menu={menu} />
-          <div className="m-1">
-              <BaseButton className='font-bold text-xs border-white border-2'
-            label="Chat with a Zbooni Agent"
-            href="https://api.whatsapp.com/send?phone=971555928787&text=Hello%20Zbooni%2C%20I%20am%20on%20the%20dashboard%20and%20need%20assistance.%20My%20store%20ID%20is%2094728"
-            color="contrast"
-            icon={mdiPhoneInTalk}
-            roundedFull
+          <hr className="border-dashed" />
+          <div className={` transition-all ${isAsideMobileExpanded ? "m-1" : "m-7"}`}>
+            <BaseButton className='font-bold text-xs border-white border-2'
+              label={`${isAsideMobileExpanded ? 'Chat with a Zbooni Agent' : ''}`}
+              href="https://api.whatsapp.com/send?phone=971555928787&text=Hello%20Zbooni%2C%20I%20am%20on%20the%20dashboard%20and%20need%20assistance.%20My%20store%20ID%20is%2094728"
+              color="contrast"
+              icon={mdiPhoneInTalk}
+              roundedFull
             /></div>
         </div>
-        
+
         <ul>
           <AsideMenuItem item={logoutItem} />
         </ul>

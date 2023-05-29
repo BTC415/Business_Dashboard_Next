@@ -1,0 +1,33 @@
+{
+    "data": [
+        {
+            "id": "886258",
+            "customer":"Abdullah Alamer",
+            "salesAgent":"Owner",
+            "date":"08:00 AM, May 12, 2023",
+            "payment":"Pending payment",
+            "orderAmt":280.00,
+            "orderAmtVAT":0.00,
+            "totalAmt":280.00,
+            "zbooniFee":0.00,
+            "zbooniFeeVAT":0.00,
+            "total":0.00,
+            "val":0.00
+        },  
+        {
+            "id": "697002",
+            "customer":"Nick Loey",
+            "salesAgent":"Owner",
+            "date":"09:39 PM, Dec 5, 2022",
+            "payment":"Paid",
+            "orderAmt": 420.00,
+            "orderAmtVAT":0.00,
+            "totalAmt":420.00,
+            "zbooniFee":14.70,
+            "zbooniFeeVAT":2.20,
+            "total":16.90,
+            "val":403.90,
+            "eligable":true
+        }
+    ]
+}

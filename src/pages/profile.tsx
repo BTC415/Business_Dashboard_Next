@@ -30,7 +30,7 @@ const ProfilePage = () => {
   const userEmail = useAppSelector((state) => state.main.userEmail)
 
   const userForm: UserForm = {
-    name: userName,
+    username: userName,
     email: userEmail,
   }
 
