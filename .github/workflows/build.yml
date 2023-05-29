@@ -13,6 +13,37 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      # other steps for building, testing, etc.
+      - name: Deploy
+        env:
+          PAT_TOKEN: ${{ secrets.TKA }}
+        run: |
+          npm run build
+
+          # Authenticate with GitHub using the PAT
+          echo "${{ secrets.TKA }}" | gh auth login --with-token
+
+          # Set the target branch for deployment
+          TARGET_BRANCH=gh-pages
+
+          # Create an empty branch if it doesn't exist already
+          git checkout -B $TARGET_BRANCH
+
+          # Delete all existing files on the target branch
+          git rm -rf .
+
+          # Copy the built assets to the target branch
+          cp -R dist/* .
+
+          # Commit the changes and push to GitHub
+          git add .
+          git commit -m "Deployed website"
+          git push origin $TARGET_BRANCH
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
