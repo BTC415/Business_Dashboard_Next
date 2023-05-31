@@ -94,7 +94,7 @@ export type Order = {
   val: number
   eligable?: boolean
 }
-export type User = {
+export type Customer = {
   id: string
   FirstName: string
   LastName: string
@@ -104,6 +104,14 @@ export type User = {
   DateCreated: string
   OrderValue: string
 }
+export type User = {
+  UserID: string
+  SubAccountName: string
+  RoleType: string
+  CreatedOn: string
+  LastLogin: string
+  AccountStatus: string
+}
 export type Catalogue = {
   ProductName:string
   cShopVisiblity:boolean
@@ -112,6 +120,14 @@ export type Catalogue = {
   QtySold:number
   TotalSold:number
   DateCreated:"Dec 8, 2022"
+}
+export type Payout = {
+  PayoutID:string
+  DateRequested:string
+  PayoutStatus:string
+  AmountRequested:string
+  PayoutFees:string
+  NetPayable:string
 }
 
 export type StyleKey = 'white' | 'basic'

@@ -1,4 +1,4 @@
-import { mdiEye, mdiPhoneInTalk, mdiTrashCan } from '@mdi/js'
+import { mdiAllInclusive, mdiEye, mdiPhoneInTalk, mdiTrashCan } from '@mdi/js'
 import React, { useState } from 'react'
 import { useCatalogue } from '../hooks/sampleData'
 import { Catalogue, } from '../interfaces'
@@ -8,6 +8,7 @@ import CardBoxModal from './CardBoxModal'
 import FormCheckRadio from './FormCheckRadio'
 import { Field, Formik } from 'formik'
 import BaseIcon from './BaseIcon'
+import Image from 'next/image'
 
 const TableCatalogue = () => {
     const { catalogue } = useCatalogue()
@@ -20,7 +21,7 @@ const TableCatalogue = () => {
     const cataloguePaginated = catalogue.slice(perPage * currentPage, perPage * (currentPage + 1))
 
     const numPages = catalogue.length / perPage
-
+    const convSAR = arr => arr.map(elem => ("SAR " + elem.toFixed(2)))
     const pagesList = []
 
     for (let i = 0; i < numPages; i++) {
@@ -46,15 +47,20 @@ const TableCatalogue = () => {
                     <tbody className='text-sm'>
                         {cataloguePaginated.map((catalogue: Catalogue, id: number) => (
                             <tr key={id}>
-                                <td>{catalogue.ProductName}</td>
+                                <td>
+                                    <Image className='inline-block p-2' alt="img" src="https://www.zbooni.com/dashboard/_next/image?url=https%3A%2F%2Fdlxl63y8t41yr.cloudfront.net%2Fmedia%2Fproducts%2F94728%2F548779_1.jpg&w=1920&q=75" width={50} height={40} />
+                                    {catalogue.ProductName}
+                                </td>
                                 <td>
                                     <FormCheckRadio type="switch" label="">
-                                        <Field type="checkbox" name="outline" />
+                                        <Field checked={catalogue.cShopVisiblity} type="checkbox" name={`outline${id}`} />
                                     </FormCheckRadio>
                                 </td>
-                                <td>{catalogue.ItemPrice}</td>
-                                <td>{catalogue.Quantitiy}</td>
-                                <td>{catalogue.TotalSold}</td>
+                                <td>{convSAR([catalogue.ItemPrice])}</td>
+                                <td>
+                                    <BaseIcon path={mdiAllInclusive} />
+                                </td>
+                                <td>{convSAR([catalogue.TotalSold])}</td>
                                 <td>{catalogue.QtySold}</td>
                                 <td>{catalogue.DateCreated}</td>
                                 <td>
@@ -65,6 +71,7 @@ const TableCatalogue = () => {
               icon={mdiPhoneInTalk}
               roundedFull
             />
+            <Image width={20} className='inline-block align-middle pb-2 pl-1' height={20} alt="img" src="https://www.zbooni.com/dashboard/_next/static/media/copy-link.3330d8ef.svg" />
             </td>
                             </tr>
                         ))}

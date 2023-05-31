@@ -1,23 +1,23 @@
 import { mdiEye, mdiTrashCan } from '@mdi/js'
 import React, { useState } from 'react'
-import { useCustomers } from '../hooks/sampleData'
-import { Customer } from '../interfaces'
+import { useUsers } from '../hooks/sampleData'
+import { User } from '../interfaces'
 import BaseButton from './BaseButton'
 import BaseButtons from './BaseButtons'
 import CardBoxModal from './CardBoxModal'
 
 type PropCellField = { data: Array<{ name: string, value: string }> }
-const TableCustomers = () => {
-    const { customers } = useCustomers()
+const TableUserManage = () => {
+    const { users } = useUsers()
 
 
     const perPage = 5
 
     const [currentPage, setCurrentPage] = useState(0)
 
-    const customersPaginated = customers.slice(perPage * currentPage, perPage * (currentPage + 1))
+    const usersPaginated = users.slice(perPage * currentPage, perPage * (currentPage + 1))
 
-    const numPages = customers.length / perPage
+    const numPages = users.length / perPage
 
     const pagesList = []
 
@@ -66,33 +66,30 @@ const TableCustomers = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Order Count</th>
-                        <th>Date Created</th>
-                        <th>Order Value</th>
-                        <th />
+                    <th>User ID</th>
+                    <th>Sub-account name</th>
+                    <th>Role type</th>
+                    <th>Created on</th>
+                    <th>Last login</th>
+                    <th>Account status</th>
                     </tr>
                 </thead>
                 <tbody className='text-sm'>
-                    {customersPaginated.map((customer: Customer) => (
-                        <tr key={customer.id}>
-                            <td>{customer.FirstName}</td>
-                            <td>{customer.LastName}</td>
-                            <td className='text-blue-500'>{customer.Email}</td>
-                            <td className='text-blue-500'>{customer.Phone}</td>
-                            <td>{customer.OrderCount}</td>
-                            <td>{customer.DateCreated}</td>
-                            <td>{customer.OrderValue}</td>
+                    {usersPaginated.map((user: User) => (
+                        <tr key={user.UserID}>
+                            <td>{user.UserID}</td>
+                            <td>{user.SubAccountName}</td>
+                            <td className='text-blue-500'>{user.RoleType}</td>
+                            <td className='text-blue-500'>{user.CreatedOn}</td>
+                            <td>{user.LastLogin}</td>
+                            <td>{user.AccountStatus}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
             <div className="p-3 lg:px-6 border-t border-gray-100 dark:border-slate-800">
                 <div className="flex flex-col md:flex-row items-center justify-between py-3 md:py-0">
-                    <small>Showing {(currentPage)*perPage+1} to {(currentPage)*perPage+customersPaginated.length} of {customers.length} results</small>
+                    <small>Showing {(currentPage)*perPage+1} to {(currentPage)*perPage+usersPaginated.length} of {users.length} results</small>
                     <BaseButtons>
                         {pagesList.map((page) => (
                             <BaseButton
@@ -114,4 +111,4 @@ const TableCustomers = () => {
     )
 }
 
-export default TableCustomers
+export default TableUserManage

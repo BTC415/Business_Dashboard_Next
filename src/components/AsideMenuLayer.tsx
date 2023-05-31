@@ -102,6 +102,7 @@ const [isAsideMobileExpanded, isAsideLgActive] = Array.isArray(states) ? states 
               label={`${isAsideMobileExpanded ? 'Chat with a Zbooni Agent' : ''}`}
               href="https://api.whatsapp.com/send?phone=971555928787&text=Hello%20Zbooni%2C%20I%20am%20on%20the%20dashboard%20and%20need%20assistance.%20My%20store%20ID%20is%2094728"
               color="contrast"
+              target='_blank'
               icon={mdiPhoneInTalk}
               roundedFull
             /></div>

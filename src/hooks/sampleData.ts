@@ -19,11 +19,29 @@ export const useCustomers = () => {
     isError: error,
   }
 }
+export const useUsers = () => {
+  const { data, error } = useSWR('/app/data-sources/users.json', fetcher)
+
+  return {
+    users: data?.data ?? [],
+    isLoading: !error && !data,
+    isError: error,
+  }
+}
 export const useCatalogue = () => {
   const { data, error } = useSWR('/app/data-sources/catalogue.json', fetcher)
 
   return {
     catalogue: data?.data ?? [],
+    isLoading: !error && !data,
+    isError: error,
+  }
+}
+export const usePayouts = () => {
+  const { data, error } = useSWR('/app/data-sources/payouts.json', fetcher)
+
+  return {
+    payouts: data?.data ?? [],
     isLoading: !error && !data,
     isError: error,
   }

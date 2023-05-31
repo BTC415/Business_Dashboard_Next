@@ -1,8 +1,26 @@
 {
     "data": [
         {
-            "ProductName":"Abdullah",
+            "ProductName":"i Tunes 250 SAR",
             "cShopVisiblity":true,
+            "ItemPrice":280,
+            "Quantitiy":"U",
+            "TotalSold":0,
+            "QtySold":0,
+            "DateCreated":"Dec 8, 2022"
+        },
+        {
+            "ProductName":"ITunes 20$",
+            "cShopVisiblity":true,
+            "ItemPrice":50,
+            "Quantitiy":"U",
+            "TotalSold":0,
+            "QtySold":0,
+            "DateCreated":"Dec 8, 2022"
+        },
+        {
+            "ProductName":"ITunes",
+            "cShopVisiblity":false,
             "ItemPrice":280,
             "Quantitiy":"U",
             "TotalSold":0,

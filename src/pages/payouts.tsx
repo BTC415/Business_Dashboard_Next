@@ -20,8 +20,8 @@ import {
   import { sampleChartData } from '../components/ChartLineSample/config'
   import { getPageTitle } from '../config'
   import Link from 'next/link'
-import TableCatalogue from '../components/TableCataloue'
 import { UserForm } from '../interfaces'
+import TablePayouts from '../components/TablePayouts'
   
   const Payouts = () => {
     const { clients } = useSampleClients()
@@ -83,7 +83,7 @@ import { UserForm } from '../interfaces'
               </Formik>
             </CardBox>
         
-        <TableCatalogue/>
+        <TablePayouts/>
         </SectionMain>
       </>
     )
