@@ -1,4 +1,5 @@
 {
+  "name": "zbooniabdulla",
   "private": true,
   "scripts": {
     "serve": "nodemon server",
