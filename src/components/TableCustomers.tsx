@@ -1,16 +1,48 @@
 import { mdiEye, mdiTrashCan } from '@mdi/js'
-import React, { useState } from 'react'
-import { useCustomers } from '../hooks/sampleData'
+import React, { useState, Children, cloneElement, ReactElement, useEffect } from 'react'
 import { Customer } from '../interfaces'
 import BaseButton from './BaseButton'
 import BaseButtons from './BaseButtons'
 import CardBoxModal from './CardBoxModal'
+import { FaSortUp, FaSortDown } from 'react-icons/fa';
+import { useRouter } from 'next/router'
 
-type PropCellField = { data: Array<{ name: string, value: string }> }
-const TableCustomers = () => {
-    const { customers } = useCustomers()
+// type PropCellField = { data: Array<{ name: string, value: string }> }
+
+export const TrWithOnClick = ({ sortNow, onClick, children }) => {
+
+    const ths = Children.toArray(children);
+
+    return (
+        <tr>
+            {
+                Children.map(ths, (child: ReactElement, index) => {
+
+                    return (
+                        <>
+                            {cloneElement(child, {
+                                onClick: () => onClick(index),
+                                style:{textAlign:'center'},
+                                children: (
+                                    <>
+                                        {child.props.children}
+                                        {index == sortNow.fieldNo && (sortNow.asc ? <FaSortUp className='float-right' /> : <FaSortDown className='float-right' />)}
+
+                                    </>
+                                )
+                            })}
+                        </>
+
+                    )
+                })
+            }
+        </tr>
+    )
+}
+const TableCustomers = ({ customers, setCustomers }:{customers:Customer[],setCustomers:(_:Customer[])=>void}) => {
 
 
+    const [sortNow, setSortNow] = useState({ fieldNo: -1, asc: true });
     const perPage = 5
 
     const [currentPage, setCurrentPage] = useState(0)
@@ -24,6 +56,9 @@ const TableCustomers = () => {
     for (let i = 0; i < numPages; i++) {
         pagesList.push(i)
     }
+    useEffect(()=>{
+        setCurrentPage(0)
+    },[customers])
 
     const [isModalInfoActive, setIsModalInfoActive] = useState(false)
     const [isModalTrashActive, setIsModalTrashActive] = useState(false)
@@ -33,6 +68,31 @@ const TableCustomers = () => {
         setIsModalTrashActive(false)
     }
 
+    const fixDate = (date) => {
+        const dateLocal = new Date(date);
+        const newDate = new Date(
+            dateLocal.getTime() - dateLocal.getTimezoneOffset() * 60 * 1000
+        );
+        return newDate;
+    };
+
+    const { push } = useRouter();
+    const handleSort = (index) => {
+        const new_custom = [...customers];
+        const keys = ['FirstName', 'LastName', 'Email', 'Phone'];
+        new_custom.sort((a, b) => {
+            let res = a[keys[index]] > b[keys[index]] ? -1 : 1;
+            // alert(a[keys[index]])
+            const newSort = { fieldNo: index, asc: true }
+            if (sortNow.fieldNo == index && sortNow.asc) {
+                newSort.asc = false;
+                res = -res;
+            }
+            setSortNow(newSort)
+            return res;
+        });
+        setCustomers(new_custom)
+    }
     return (
         <>
             <CardBoxModal
@@ -63,9 +123,9 @@ const TableCustomers = () => {
                 <p>This is sample modal</p>
             </CardBoxModal>
 
-            <table>
+            <table className='cursor-pointer bg-white dark:bg-transparent' >
                 <thead>
-                    <tr>
+                    <TrWithOnClick sortNow={sortNow} onClick={handleSort}>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
@@ -74,17 +134,19 @@ const TableCustomers = () => {
                         <th>Date Created</th>
                         <th>Order Value</th>
                         <th />
-                    </tr>
+                    </TrWithOnClick>
                 </thead>
                 <tbody className='text-sm'>
-                    {customersPaginated.map((customer: Customer) => (
-                        <tr key={customer.id}>
+                    {customersPaginated.map((customer) => (
+                        <tr className='hover:bg-slate-200' onClick={() => {
+                            push(`/customers/${customer._id}`)
+                        }} key={customer._id}>
                             <td>{customer.FirstName}</td>
                             <td>{customer.LastName}</td>
                             <td className='text-blue-500'>{customer.Email}</td>
                             <td className='text-blue-500'>{customer.Phone}</td>
                             <td>{customer.OrderCount}</td>
-                            <td>{customer.DateCreated}</td>
+                            <td>{(new Date(customer.createdAt)).toLocaleDateString("en-US", { /* weekday: 'long', */ year: 'numeric', month: 'long', day: 'numeric' })}</td>
                             <td>{customer.OrderValue}</td>
                         </tr>
                     ))}
@@ -92,7 +154,7 @@ const TableCustomers = () => {
             </table>
             <div className="p-3 lg:px-6 border-t border-gray-100 dark:border-slate-800">
                 <div className="flex flex-col md:flex-row items-center justify-between py-3 md:py-0">
-                    <small>Showing {(currentPage)*perPage+1} to {(currentPage)*perPage+customersPaginated.length} of {customers.length} results</small>
+                    <small>Showing {(currentPage) * perPage + 1} to {(currentPage) * perPage + customersPaginated.length} of {customers.length} results</small>
                     <BaseButtons>
                         {pagesList.map((page) => (
                             <BaseButton

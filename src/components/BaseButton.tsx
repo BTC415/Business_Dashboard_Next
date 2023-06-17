@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import StatesContext from '../layouts/StatesContext';
+import Store from '../store/store';
 import Link from 'next/link'
 import { getButtonColor } from '../colors'
 import BaseIcon from './BaseIcon'
@@ -56,14 +56,14 @@ export default function BaseButton({
     className,
   ]
 
-  const states = useContext(StatesContext);
-const [isAsideMobileExpanded, isAsideLgActive] = Array.isArray(states) ? states : [false, false];
+  const {state} = useContext(Store);
+  
   if (!label && icon) {
     componentClass.push('p-1')
   } else if (small) {
     componentClass.push('text-sm', roundedFull ? 'px-3 py-1' : 'p-1')
   } else {
-    componentClass.push('py-2', roundedFull ? (isAsideMobileExpanded?'px-6':'px-2') : 'px-3')
+    componentClass.push('py-2', roundedFull ? (state.asideMobileExpanded?'px-6':'px-2') : 'px-3')
   }
 
   if (disabled) {
@@ -74,7 +74,7 @@ const [isAsideMobileExpanded, isAsideLgActive] = Array.isArray(states) ? states 
   const componentChildren = (
     <>
       {icon && <BaseIcon path={icon} size={iconSize} />}
-      {label && <span className={`${small && icon ? 'px-1' : 'px-2'} ${!isAsideMobileExpanded?'text-2xl':''}`}>{label}</span>}
+      {label && <span className={`${small && icon ? 'px-1' : 'px-2'} ${!state.asideMobileExpanded?'text-2xl':''}`}>{label}</span>}
     </>
   )
 

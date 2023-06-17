@@ -36,6 +36,7 @@ import Link from 'next/link'
 const Dashboard = () => {
   const { clients } = useSampleClients()
   const { transactions } = useSampleTransactions()
+  const [welcomeState, setWelcomeState] = useState(true);
 
   const clientsListed = clients.slice(0, 4)
 
@@ -55,21 +56,20 @@ const Dashboard = () => {
       <SectionMain>
 
         <hr className="border-dashed" />
-
-
-        <CardBox className="m-6">
+        
+        <CardBox className={`m-6 ${!welcomeState?"hidden":""}`}>
 
           <p className=" w-full">
             <BaseButton
               icon={mdiCloseThick}
-              onClick={() => alert()}
-              className={`flex-none float-right  `}
+              onClick={() => {setWelcomeState(false)}}
+              className={`flex-none float-right dark:bg-slate-900 dark:text-white  `}
               // w="w-16"
             /> </p>
           <Image alt="img" className=" float-right" src="https://zbooni.com/dashboard/_next/image?url=%2Fdashboard%2F_next%2Fstatic%2Fmedia%2Fwelcome-graphic.a5b0eb20.png&w=1920&q=75" width={300} height={300} />
           <div className="w-2/4 p-8">
-            <h1 className="text-2xl pb-3">Hello! Welcome to your Business Dashboard</h1>
-            <p className="font-normal" style={{ fontFamily: 'sans-serif' }}>This is your portal to analytics and insights that will help you Track Everything and stay on top of your business. Use this dashboard to track you sales performance, customers, top selling products or services and keep a clear record of your receipts.</p>
+            <h1 className="text-md font-semibold md:mt-0 mb-4 lg:text-2xl lg:font-light">Hello! Welcome to your Business Dashboard</h1>
+            <p >This is your portal to analytics and insights that will help you Track Everything and stay on top of your business. Use this dashboard to track you sales performance, customers, top selling products or services and keep a clear record of your receipts.</p>
 
           </div>
 

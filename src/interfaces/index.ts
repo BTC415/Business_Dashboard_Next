@@ -95,14 +95,15 @@ export type Order = {
   eligable?: boolean
 }
 export type Customer = {
-  id: string
+  _id: string
   FirstName: string
   LastName: string
   Email: string
   Phone: string
-  OrderCount: string
-  DateCreated: string
-  OrderValue: string
+  Notes:string
+  // OrderCount: string
+  createdAt : string
+  // OrderValue: string
 }
 export type User = {
   UserID: string
@@ -112,14 +113,16 @@ export type User = {
   LastLogin: string
   AccountStatus: string
 }
-export type Catalogue = {
+export type Catalog = {
+  _id:string
   ProductName:string
   cShopVisiblity:boolean
+  Delivery:boolean
   ItemPrice:number
-  Quantitiy:string //number
-  QtySold:number
-  TotalSold:number
-  DateCreated:"Dec 8, 2022"
+  Quantity:string //number
+  // QtySold:number
+  // TotalSold:number
+  createdAt:string
 }
 export type Payout = {
   PayoutID:string

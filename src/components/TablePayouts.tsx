@@ -1,7 +1,7 @@
 import { mdiAllInclusive, mdiEye, mdiPhoneInTalk, mdiTrashCan } from '@mdi/js'
 import React, { useState } from 'react'
 import { usePayouts } from '../hooks/sampleData'
-import { Catalogue, Payout, } from '../interfaces'
+import { Catalog, Payout, } from '../interfaces'
 import BaseButton from './BaseButton'
 import BaseButtons from './BaseButtons'
 import CardBoxModal from './CardBoxModal'
@@ -21,7 +21,7 @@ const TablePayouts = () => {
     const payoutsPaginated = payouts.slice(perPage * currentPage, perPage * (currentPage + 1))
 
     const numPages = payouts.length / perPage
-    const convSAR = arr => arr.map(elem => ("SAR " + elem.toFixed(2)))
+    
     const pagesList = []
 
     for (let i = 0; i < numPages; i++) {

@@ -27,7 +27,7 @@ const menuAside: MenuAsideItem[] = [
     icon: mdiCrowd,
   },
   {
-    href: '/catalogue',
+    href: '/catalog',
     label: 'Catalogue',
     icon: mdiPencil,
   },

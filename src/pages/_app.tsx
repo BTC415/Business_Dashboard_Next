@@ -8,6 +8,8 @@ import { store } from '../stores/store'
 import { Provider } from 'react-redux'
 import '../css/main.css'
 
+import "../css/createorder.css"
+
 export type NextPageWithLayout<P = Record<string, unknown>, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode
 }
@@ -55,7 +57,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
             <meta property="twitter:image:width" content={imageWidth} />
             <meta property="twitter:image:height" content={imageHeight} />
 
-            <link rel="icon" href="https://www.zbooni.com/dashboard/static/favicon.ico" />
+            <link rel="icon" href="/fav.ico" />
           </Head>
 
           <Script

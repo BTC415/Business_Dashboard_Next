@@ -25,7 +25,7 @@ import {
   import { sampleChartData } from '../components/ChartLineSample/config'
   import { getPageTitle } from '../config'
   import Link from 'next/link'
-import TableCatalogue from '../components/TableCataloue'
+import TableCatalog from '../components/TableCatalog'
 import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton'
   
   const Invoices = () => {
@@ -57,7 +57,7 @@ import SectionTitleLineWithButton from '../components/SectionTitleLineWithButton
         <SectionTitleLineWithButton icon={mdiCog} title=" Tax Invoice Summary forMay 2023" main />
             
         
-        <TableCatalogue/>
+        <TableCatalog/>
         </SectionMain>
       </>
     )
