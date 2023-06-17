@@ -94,24 +94,43 @@ export type Order = {
   val: number
   eligable?: boolean
 }
-export type User = {
-  id: string
+export type Customer = {
+  _id: string
   FirstName: string
   LastName: string
   Email: string
   Phone: string
-  OrderCount: string
-  DateCreated: string
-  OrderValue: string
+  Notes:string
+  // OrderCount: string
+  createdAt : string
+  // OrderValue: string
 }
-export type Catalogue = {
+export type User = {
+  UserID: string
+  SubAccountName: string
+  RoleType: string
+  CreatedOn: string
+  LastLogin: string
+  AccountStatus: string
+}
+export type Catalog = {
+  _id:string
   ProductName:string
   cShopVisiblity:boolean
+  Delivery:boolean
   ItemPrice:number
-  Quantitiy:string //number
-  QtySold:number
-  TotalSold:number
-  DateCreated:"Dec 8, 2022"
+  Quantity:string //number
+  // QtySold:number
+  // TotalSold:number
+  createdAt:string
+}
+export type Payout = {
+  PayoutID:string
+  DateRequested:string
+  PayoutStatus:string
+  AmountRequested:string
+  PayoutFees:string
+  NetPayable:string
 }
 
 export type StyleKey = 'white' | 'basic'

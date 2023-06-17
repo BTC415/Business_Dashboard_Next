@@ -1,10 +1,11 @@
 import { mdiEye, mdiTrashCan } from '@mdi/js'
 import React, { useState } from 'react'
-import { useOrders } from '../hooks/sampleData'
+import { convSAR, useOrders } from '../hooks/sampleData'
 import { Order } from '../interfaces'
 import BaseButton from './BaseButton'
 import BaseButtons from './BaseButtons'
 import CardBoxModal from './CardBoxModal'
+import { useRouter } from 'next/router'
 
 type PropCellField = {data: Array<{ name: string, value: string }>}
 const CellField = ({data}:PropCellField) => {
@@ -32,7 +33,7 @@ const OrderDetail = ({data,names}:PropOrderDetail) => {
 const TableOrders = () => {
   const { orders } = useOrders()
 
-  const convSAR = arr => arr.map(elem => ("SAR " + elem.toFixed(2)))
+  
 
   const perPage = 5
 
@@ -42,6 +43,7 @@ const TableOrders = () => {
 
   const numPages = orders.length / perPage
 
+  const { push } = useRouter();
   const pagesList = []
 
   for (let i = 0; i < numPages; i++) {
@@ -86,7 +88,7 @@ const TableOrders = () => {
         <p>This is sample modal</p>
       </CardBoxModal>
 
-      <table>
+      <table className='cursor-pointer bg-white dark:bg-transparent'>
         <thead>
           <tr>
             <th>Order Details</th>
@@ -98,7 +100,9 @@ const TableOrders = () => {
         </thead>
         <tbody>
           {ordersPaginated.map((order: Order) => (
-            <tr key={order.id}>
+            <tr key={order.id} onClick={() => {
+              push(`/orders/${order.id}`)
+          }}>
               <td data-label="Order Details">
                 <OrderDetail names={["Order Id", "Customer", "Sales Agent", "Date", "Payment"]}
                 data={[order.id,order.customer,order.salesAgent,order.date,order.payment]} />

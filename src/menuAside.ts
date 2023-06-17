@@ -27,7 +27,7 @@ const menuAside: MenuAsideItem[] = [
     icon: mdiCrowd,
   },
   {
-    href: '/catalogue',
+    href: '/catalog',
     label: 'Catalogue',
     icon: mdiPencil,
   },
@@ -42,14 +42,15 @@ const menuAside: MenuAsideItem[] = [
     icon: mdiReceiptTextCheck,
   },
   {
-    href: '/profile',
+    href: '/usermanage',
     label: 'User Management',
     icon: mdiTableAccount,
   },
   {
     label: 'Give Feedback',
     icon: mdiCommentQuoteOutline,
-    href: '/feedback'
+    target:"_blank",
+    href: 'https://qjtaaeisshw.typeform.com/to/YXhQoiqC#store_id=94728&store_domain=mstshr&store_name=%D9%85%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1'
   },
 ]
 

@@ -1,8 +1,4 @@
 import {
-    mdiMonitorDashboard,
-    mdiAccount,
-    mdiMail,
-    mdiSearchWeb,
     mdiMagnify
   } from '@mdi/js'
   import Head from 'next/head'
@@ -25,10 +21,10 @@ import {
   import { getPageTitle } from '../config'
   import Link from 'next/link'
   import TableOrders from '../components/TableOrders'
-import TableCustomers from '../components/TableCustomers'
+import TableUserMange from '../components/TableUserManage'
 import { UserForm } from '../interfaces'
   
-  const Orders = () => {
+  const UserManage = () => {
     const { clients } = useSampleClients()
     const { transactions } = useSampleTransactions()
   
@@ -53,37 +49,18 @@ import { UserForm } from '../interfaces'
         </Head>
         <SectionMain>
   
-            Customers
+            <h1 className='text-3xl font-bold mb-8'>User Management</h1>
             
-            <CardBox className="flex-1" hasComponentLayout>
-              <Formik
-                initialValues={userFormVal}
-                onSubmit={(values: UserForm) => alert(JSON.stringify(values, null, 2))}
-              >
-                <Form className="flex flex-col flex-1">
-                  <CardBoxComponentBody>
-                    <FormField
-                      label="Name"
-                      // help="Required. Your name"
-                      labelFor="name"
-                      icons={[mdiMagnify]}
-                    >
-                      <Field name="name" id="name" placeholder="Who are you looking for?" />
-                    </FormField>
-                  </CardBoxComponentBody>
-                </Form>
-              </Formik>
-            </CardBox>
         
-        <TableCustomers/>
+        <TableUserMange/>
         </SectionMain>
       </>
     )
   }
   
-  Orders.getLayout = function getLayout(page: ReactElement) {
+  UserManage.getLayout = function getLayout(page: ReactElement) {
     return <LayoutAuthenticated>{page}</LayoutAuthenticated>
   }
   
-  export default Orders
+  export default UserManage
   

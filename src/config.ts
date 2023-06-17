@@ -9,3 +9,8 @@ export const sidePadding = '[250px]'
 export const appTitle = 'Zbooni copied website'
 
 export const getPageTitle = (currentPageTitle: string) => `${currentPageTitle} — ${appTitle}`
+
+export const config = {
+    apiUrl: "/api/v1",
+  };
+  

@@ -1,31 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { MenuAsideItem } from '../interfaces'
 import AsideMenuLayer from './AsideMenuLayer'
 import OverlayLayer from './OverlayLayer'
-import {sidePadding} from '../config'
+import { sidePadding } from '../config'
+import Store from '../store/store'
 
 type Props = {
   menu: MenuAsideItem[]
-  isAsideMobileExpanded: boolean
-  isAsideLgActive: boolean
   onAsideLgClose: () => void
 }
-
 export default function AsideMenu({
-  isAsideMobileExpanded = false,
-  isAsideLgActive = false,
   ...props
 }: Props) {
+
+  const {state} = useContext(Store);
   return (
     <>
       <AsideMenuLayer
         menu={props.menu}
-        className={`${isAsideMobileExpanded ? 'left-0' : `-left-${sidePadding} lg:left-0`} ${
-          !isAsideLgActive ? 'lg:hidden xl:flex' : ''
-        }`}
+        className={` transition-all ease-in-out ${state.asideMobileExpanded ? '  lg:-left-0 left-0' : `-left-[250px] xl:left-0`} ${!state.asideLgActive ? 'lg:hidden xl:flex' : ''
+          }`}
         onAsideLgCloseClick={props.onAsideLgClose}
       />
-      {isAsideLgActive && <OverlayLayer zIndex="z-35" onClick={props.onAsideLgClose} />}
+      {state.asideLgActive && <OverlayLayer zIndex="z-35" onClick={props.onAsideLgClose} />}
     </>
   )
 }
