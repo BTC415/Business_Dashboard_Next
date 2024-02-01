@@ -1,12 +1,7 @@
 # [Admin One &mdash; Free React Tailwind 3.x Admin Dashboard with dark mode](https://justboil.me/tailwind-admin-templates/free-react-dashboard/)
 
-[![version](https://img.shields.io/github/v/release/justboil/admin-one-react-tailwind)](https://justboil.me/tailwind-admin-templates/free-react-dashboard/)  [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://justboil.me/tailwind-admin-templates/free-react-dashboard/)
-
-### Tailwind 3.x React with Next.js and TypeScript
-
-[![Free React Tailwind TypeScript admin dashboard with dark mode](https://static.justboil.me/templates/one/repo-tailwind-react.png)](https://justboil.github.io/admin-one-react-tailwind/)
-
-[![React TypeScript Tailwind white & dark styles](https://static.justboil.me/templates/one/repo-styles.png)](https://justboil.github.io/admin-one-react-tailwind/)
+[![version](https://img.shields.io/github/v/release/justboil/admin-one-react-tailwind)] 
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)]
 
 ### Tailwind 3.x React with Next.js and TypeScript
 
@@ -20,7 +15,6 @@
 * **Production CSS** is only **&thickapprox;38kb**
 * Reusable components
 * Free under MIT License
-* [Premium version](https://justboil.me/tailwind-admin-templates/react-dashboard/) available
 
 ## Table of Contents
 
@@ -42,43 +36,6 @@
 * [Licensing](#licensing)
 * [Useful Links](#useful-links)
 
-## Looking for Vue version?
-
-This is **Tailwind React TypeScript** version
-
-Looking for **Tailwind Vue**? Check [Admin One - Vue Tailwind dashboard](https://github.com/justboil/admin-one-vue-tailwind) version
-
-## Responsive layout
-
-### Mobile & tablet
-
-Mobile layout with hidden aside menu and collapsable cards & tables
-
-[![Free React Tailwind CSS 3 admin dashboard](https://static.justboil.me/templates/one/one-tailwind-vue-mobile.png)](https://justboil.github.io/admin-one-react-tailwind/)
-
-### Small laptops 1024px
-
-Small laptop layout with show/hide aside menu option
-
-[![Free React Tailwind CSS 3 admin dashboard](https://static.justboil.me/templates/one/one-tailwind-vue-1024.png)](https://justboil.github.io/admin-one-react-tailwind/)
-
-[![Free React Tailwind CSS 3 admin dashboard](https://static.justboil.me/templates/one/one-tailwind-vue-1024-menu-open.png)](https://justboil.github.io/admin-one-react-tailwind/)
-
-### Laptops & desktops
-
-Classic layout with aside menus on the left
-
-[![Free React Tailwind CSS 3 admin dashboard](https://static.justboil.me/templates/one/one-tailwind-vue-widescreen.png)](https://justboil.github.io/admin-one-react-tailwind/)
-
-## Demo
-
-### Free Dashboard Demo
-
-https://justboil.github.io/admin-one-react-tailwind/
-
-### Premium Dashboard Demo
-
-Premium version is coming soon
 
 ## Quick Start
 
@@ -92,9 +49,10 @@ Get code & install. Then `dev` or `build`
 
 #### Get the repo
 
-* [Create new repo](https://github.com/justboil/admin-one-react-tailwind/generate) with this template
-* &hellip; or clone this repo on GitHub
-* &hellip; or [download .zip](https://github.com/justboil/admin-one-react-tailwind/archive/master.zip) from GitHub
+* Clone this repo on GitHub
+```
+git clone https://github.com/BTC415/Business_Dashboard_Next.git
+```
 
 #### Install
 
@@ -160,12 +118,11 @@ The issue list is reserved exclusively for bug reports and feature requests. Tha
 
 ## Licensing
 
-- Copyright &copy; 2019-2022 JustBoil.me (https://justboil.me)
+- Copyright &copy; 2019-2022
 - Licensed under MIT
 
 ## Useful Links
 
-- [JustBoil.me](https://justboil.me/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Next.js Docs](https://nextjs.org/docs/getting-started)
 - [React.js Docs](https://reactjs.org/docs/getting-started.html)
